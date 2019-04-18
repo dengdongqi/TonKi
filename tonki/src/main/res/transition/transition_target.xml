@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:transitionOrdering="together"
+    tools:ignore="all"
+    android:duration="400"
+    >
+
+    <!--代码对应                    	xml对应	                        解释-->
+    <!--addTarget()	            android:targetId	    指定目标View，让目标View参与动画-->
+    <!--excludeTarget()	        android:excludeId	    是否过滤指定View(是否参与动画)-->
+    <!--excludeChildren()	    无	                    是否过滤指定ViewGroup的子View(是否参与动画)-->
+
+    <!--定义了两个过渡动画slide、fade。顺序执行。-->
+    <slide android:slideEdge="bottom">
+        <!--slide 动画针对 id 为 image_shared 的 view 进行下面滑入-->
+        <!--<targets>-->
+            <!--<target android:targetId="@id/image_shared" />-->
+        <!--</targets>-->
+    </slide>
+
+    <fade>
+        <!--fade 动画将除了状态栏、导航栏和 id titleBar 以外的 view，进行淡入淡出。-->
+        <targets>
+            <!--<target android:excludeId="@android:id/statusBarBackground" />-->
+            <!--<target android:excludeId="@android:id/navigationBarBackground" />-->
+            <!--<target android:excludeId="@id/titleBar" />-->
+        </targets>
+    </fade>
+
+</transitionSet>

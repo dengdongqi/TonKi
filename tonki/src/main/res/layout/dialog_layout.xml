@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+     >
+ <RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="@drawable/dialog_bg"
+    android:layout_marginLeft="20dip"
+    android:layout_marginRight="20dip"
+     >
+
+    <TextView
+        android:id="@+id/title"
+        android:textColor="#434343"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:text="温馨提示"
+        android:lineSpacingExtra="9dp"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="12dp"
+        />
+    <TextView 
+         android:id="@+id/context"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="#434343"
+        />
+    
+    <View 
+         android:id="@+id/hline"
+        android:layout_height="1px"
+        android:layout_width="match_parent"
+        android:background="#d4d4d4"
+        android:layout_below="@id/context"
+        />
+
+    <LinearLayout
+        android:id="@+id/dialog_btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/context"
+         >
+
+        <Button
+            android:id="@+id/cancle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:textColor="#999999"
+            android:textSize="16sp"
+            android:background="#0000"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:onClick="doClick"
+            android:text="取消" />
+       <View 
+          android:id="@+id/vline"
+        android:layout_height="match_parent"
+        android:layout_width="1px"
+        android:background="#d4d4d4"
+        />
+        
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#0000"
+            android:textColor="#ff441f"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:minWidth="120dip"
+            android:onClick="doClick"
+            android:layout_weight="1"
+            android:text="查看" />
+    </LinearLayout>
+</RelativeLayout>
+</LinearLayout>
