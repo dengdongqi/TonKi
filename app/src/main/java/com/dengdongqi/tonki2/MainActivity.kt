@@ -2,7 +2,6 @@ package com.dengdongqi.tonki2
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.dengdongqi.tonki.helper.StatusBarManager
 import com.dengdongqi.tonki.view.ProgressDialog
 
 class MainActivity : AppCompatActivity() {
