@@ -49,7 +49,6 @@ class ProgressWebView : WebView {
         progressView = ProgressView(context!!)
         progressView!!.layoutParams =
             ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ConvertUtils.dp2px(4f))
-
         progressView!!.setProgress(10)
         //把进度条加到Webview中
         addView(progressView)
