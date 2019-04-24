@@ -12,6 +12,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.annotation.RequiresApi
 import com.blankj.utilcode.util.ConvertUtils
+import com.blankj.utilcode.util.ToastUtils
 
 /**
  * <pre>
@@ -72,31 +73,20 @@ class ProgressWebView : WebView {
     private inner class MyWebViewClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(wv: WebView, url: String?): Boolean {
             if (url == null) return false
-            try {
-                if (url.startsWith("weixin://") //微信
-
-                    || url.startsWith("alipays://") //支付宝
-
-                    || url.startsWith("mailto://") //邮件
-
-                    || url.startsWith("tel://")//电话
-
-                    || url.startsWith("dianping://")//大众点评
-
-                    || url.startsWith("baiduboxlite://")
-                    || url.startsWith("baidumap://")
-                ) {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                    context!!.startActivity(intent)
-                    return true
-                }//其他自定义的scheme
-            } catch (e: Exception) { //防止crash (如果手机上没有安装处理某个scheme开头的url的APP, 会导致crash)
-                return true//没有安装该app时，返回true，表示拦截自定义链接，但不跳转，避免弹出上面的错误页面
+            return if (url.startsWith("http:") || url.startsWith("https:")) {
+                //处理http和https开头的url
+                wv.loadUrl(url)
+                false
+            } else {
+                try {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(url)
+                    context.startActivity(intent)
+                } catch (e: Exception) {  //防止crash (如果手机上没有安装处理某个scheme开头的url的APP, 会导致crash)
+                    ToastUtils.showShort("暂无应用打开此链接")
+                }
+                true
             }
-
-            //处理http和https开头的url
-            wv.loadUrl(url)
-            return true
         }
     }
 
